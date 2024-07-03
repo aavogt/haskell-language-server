@@ -24,6 +24,8 @@ tests :: TestTree
 tests = testGroup "Rename"
     [ goldenWithRename "Data constructor" "DataConstructor" $ \doc ->
         rename doc (Position 0 15) "Op"
+    , goldenWithRename "Data constructor declaration" "DataDec" $ \doc ->
+        rename doc (Position 2 9) "CXX"
     , goldenWithRename "Exported function" "ExportedFunction" $ \doc ->
         rename doc (Position 2 1) "quux"
     , goldenWithRename "Field Puns" "FieldPuns" $ \doc ->
