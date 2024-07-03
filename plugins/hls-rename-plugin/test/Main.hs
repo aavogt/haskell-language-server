@@ -64,6 +64,11 @@ tests = testGroup "Rename"
         rename doc (Position 2 17) "BinaryTree"
     , goldenWithRename "Type variable" "TypeVariable" $ \doc ->
         rename doc (Position 0 13) "b"
+    , goldenWithRename "Varsym to Varid function name" "VarsymVarid" $ \doc -> do
+        rename doc (Position 2 0) "(&)"
+        rename doc (Position 3 0) "%"
+        rename doc (Position 4 1) "h"
+        rename doc (Position 5 1) "`i`"
     , goldenWithRename "Rename within comment" "Comment" $ \doc -> do
         let expectedError = TResponseError
                 (InR ErrorCodes_InvalidParams)
